@@ -36,10 +36,13 @@ class LoginScreen extends StatelessWidget {
         stream: bloc.password,
         builder: (context, snapshot) {
           return TextField(
-            /// Add to the stream whe the user inputs to the TextField
+            /// Add to the stream when the user inputs to the TextField
             onChanged: bloc.changePassword,
             decoration: InputDecoration(
               labelText: 'Password',
+
+              /// Display errorText when the validation fails
+              errorText: snapshot.error,
             ),
             obscureText: true,
           );
