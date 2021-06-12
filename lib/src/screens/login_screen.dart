@@ -40,10 +40,19 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget emailField() {
+    /// StreamBuilder takes a stream and a builder function
     return StreamBuilder(
+
+        /// Inside the bloc, there's a email stream
         stream: bloc.email,
+
+        /// Any time the StreamBuilder sees a new event from email stream, it calls the builder function and re-renders itself.
         builder: (context, snapshot) {
           return TextField(
+            /// When the user inputs to the Textfield, add the value to the stream
+            onChanged: (String newValue) {
+              bloc.changeEmail(newValue);
+            },
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'me@test.com',
