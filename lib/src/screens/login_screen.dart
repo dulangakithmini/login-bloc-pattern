@@ -29,6 +29,7 @@ class LoginScreen extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Password',
       ),
+      obscureText: true,
     );
   }
 
