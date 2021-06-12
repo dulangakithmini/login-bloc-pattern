@@ -27,3 +27,6 @@ class Bloc with ValidationMixin {
     _passwordController.close();
   }
 }
+
+/// Single global instance
+final bloc = Bloc();

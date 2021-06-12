@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../blocs/bloc.dart';
+
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -7,7 +9,7 @@ class LoginScreen extends StatelessWidget {
       margin: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          emailFiled(),
+          emailField(),
           passwordField(),
           submitButton(),
         ],
@@ -37,7 +39,12 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  TextField emailFiled() {
+  Widget emailField() {
+    return StreamBuilder(
+        stream: bloc.email,
+        builder:
+    );
+
     return TextField(
       decoration: InputDecoration(
         labelText: 'Email',
