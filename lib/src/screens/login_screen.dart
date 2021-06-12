@@ -35,6 +35,7 @@ class LoginScreen extends StatelessWidget {
         labelText: 'Email',
         hintText: 'me@test.com',
       ),
+      keyboardType: TextInputType.emailAddress,
     );
   }
 }
