@@ -56,6 +56,9 @@ class LoginScreen extends StatelessWidget {
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'me@test.com',
+
+              /// When the stream emits an error message, pass it to errorText property
+              errorText: snapshot.error,
             ),
             keyboardType: TextInputType.emailAddress,
           );
