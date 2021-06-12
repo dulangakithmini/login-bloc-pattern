@@ -9,12 +9,15 @@ class LoginScreen extends StatelessWidget {
         children: [
           emailFiled(),
           passwordField(),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text('Submit'),
-            style: ElevatedButton.styleFrom(
-              onPrimary: Colors.black,
+          Container(
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text('Submit'),
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.black,
+              ),
             ),
+            margin: EdgeInsets.only(top: 20),
           ),
         ],
       ),
@@ -24,7 +27,7 @@ class LoginScreen extends StatelessWidget {
   TextField passwordField() {
     return TextField(
       decoration: InputDecoration(
-        labelText: 'Passord',
+        labelText: 'Password',
       ),
     );
   }
