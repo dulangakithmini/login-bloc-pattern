@@ -7,17 +7,8 @@ class LoginScreen extends StatelessWidget {
       margin: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Email',
-              hintText: 'me@test.com',
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: 'Passord',
-            ),
-          ),
+          emailFiled(),
+          passwordField(),
           ElevatedButton(
             onPressed: () {},
             child: Text('Submit'),
@@ -26,6 +17,23 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  TextField passwordField() {
+    return TextField(
+      decoration: InputDecoration(
+        labelText: 'Passord',
+      ),
+    );
+  }
+
+  TextField emailFiled() {
+    return TextField(
+      decoration: InputDecoration(
+        labelText: 'Email',
+        hintText: 'me@test.com',
       ),
     );
   }
