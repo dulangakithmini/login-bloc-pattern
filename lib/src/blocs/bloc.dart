@@ -15,8 +15,15 @@ class Bloc with ValidationMixin {
   void Function(String) get changePassword => _passwordController.sink.add;
 
   /// Retrieve data from the stream
-  Stream<String> get email => _emailController.stream.transform(emailValidator);
+  Stream<String> get email => _emailController.stream.transform(
+      emailValidator) /* Can listen to only the events that come over the transformed stream */;
 
   Stream<String> get password =>
       _passwordController.stream.transform(passwordValidator);
+
+  /// Dispose StreamControllers
+  dispose() {
+    _emailController.close();
+    _passwordController.close();
+  }
 }
