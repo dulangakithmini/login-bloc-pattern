@@ -6,7 +6,26 @@ class LoginScreen extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(20.0),
       child: Column(
-        children: [],
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Email',
+              hintText: 'me@test.com',
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'Passord',
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text('Submit'),
+            style: ElevatedButton.styleFrom(
+              onPrimary: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
