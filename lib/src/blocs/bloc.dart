@@ -1,6 +1,8 @@
 import 'dart:async';
 
-class Bloc {
+import 'package:login_bloc/src/blocs/validation_mixin.dart';
+
+class Bloc with ValidationMixin {
   final StreamController<String> _emailController = StreamController<String>();
   final StreamController<String> _passwordController =
       StreamController<String>();

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-class ValidationMixin {
+mixin ValidationMixin {
   /// StreamTransformer to validate email
   final StreamTransformer<String, String> emailValidator =
       StreamTransformer.fromHandlers(
