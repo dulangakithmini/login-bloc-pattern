@@ -17,16 +17,13 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Container submitButton() {
-    return Container(
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text('Submit'),
-        style: ElevatedButton.styleFrom(
-          onPrimary: Colors.black,
-        ),
+  Widget submitButton() {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text('Submit'),
+      style: ElevatedButton.styleFrom(
+        onPrimary: Colors.black,
       ),
-      margin: EdgeInsets.only(top: 20),
     );
   }
 
@@ -37,7 +34,9 @@ class LoginScreen extends StatelessWidget {
         builder: (context, snapshot) {
           return TextField(
             /// Add to the stream when the user inputs to the TextField
-            onChanged: bloc.changePassword,
+            onChanged: (String newValue) {
+              bloc.changePassword(newValue);
+            },
             decoration: InputDecoration(
               labelText: 'Password',
 
@@ -52,26 +51,26 @@ class LoginScreen extends StatelessWidget {
   Widget emailField() {
     /// StreamBuilder takes a stream and a builder function
     return StreamBuilder(
+      /// Inside the bloc, there's a email stream
+      stream: bloc.email,
 
-        /// Inside the bloc, there's a email stream
-        stream: bloc.email,
+      /// Any time the StreamBuilder sees a new event from email stream, it calls the builder function and re-renders itself.
+      builder: (context, snapshot) {
+        return TextField(
+          /// When the user inputs to the Textfield, add the value to the stream
+          onChanged: (String newValue) {
+            bloc.changeEmail(newValue);
+          },
+          decoration: InputDecoration(
+            labelText: 'Email',
+            hintText: 'me@test.com',
 
-        /// Any time the StreamBuilder sees a new event from email stream, it calls the builder function and re-renders itself.
-        builder: (context, snapshot) {
-          return TextField(
-            /// When the user inputs to the Textfield, add the value to the stream
-            onChanged: (String newValue) {
-              bloc.changeEmail(newValue);
-            },
-            decoration: InputDecoration(
-              labelText: 'Email',
-              hintText: 'me@test.com',
-
-              /// When the stream emits an error message, pass it to errorText property
-              errorText: snapshot.error,
-            ),
-            keyboardType: TextInputType.emailAddress,
-          );
-        });
+            /// When the stream emits an error message, pass it to errorText property
+            errorText: snapshot.error,
+          ),
+          keyboardType: TextInputType.emailAddress,
+        );
+      },
+    );
   }
 }
