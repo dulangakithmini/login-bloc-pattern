@@ -15,8 +15,8 @@ class LoginScreen extends StatelessWidget {
       margin: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          emailField(),
-          passwordField(),
+          emailField(Bloc bloc),
+          passwordField(Bloc bloc),
           submitButton(),
         ],
       ),
