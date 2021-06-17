@@ -10,4 +10,8 @@ class Provider extends InheritedWidget {
     return true;
     // throw UnimplementedError();
   }
+
+  static Bloc of(BuildContext context) {
+    return (context.dependOnInheritedWidgetOfExactType<Provider>()).bloc;
+  }
 }
