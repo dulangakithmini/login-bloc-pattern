@@ -37,4 +37,4 @@ class Bloc with ValidationMixin {
 }
 
 /// Single global instance
-final bloc = Bloc();
+// final bloc = Bloc();

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../blocs/bloc.dart';
+import '../blocs/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// Pass the context of LoginScreen to the 'of' method of Provider.
+    /// Can access the 'of' method without creating an instance of the Provider since it is a static method.
+    /// of method looks at the hierarchy, find the nearest instance of the Provider, pulls off the bloc property and returns it.
+    final bloc = Provider.of(context);
+
     return Container(
       margin: EdgeInsets.all(20.0),
       child: Column(
