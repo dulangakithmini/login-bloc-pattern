@@ -43,6 +43,9 @@ class Bloc with ValidationMixin {
     // });
   }
 
+  /// When the user click on submit, access  the email and password inside here
+  submit() {}
+
   /// Dispose StreamControllers
   dispose() {
     _emailController.close();
