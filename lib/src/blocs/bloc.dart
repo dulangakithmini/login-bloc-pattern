@@ -46,7 +46,13 @@ class Bloc with ValidationMixin {
   }
 
   /// When the user click on submit, access  the email and password inside here
-  submit() {}
+  submit() {
+    final validEmail = _emailController.value;
+    final validPassword = _passwordController.value;
+
+    print('Email is $validEmail');
+    print('Password is $validPassword');
+  }
 
   /// Dispose StreamControllers
   dispose() {
