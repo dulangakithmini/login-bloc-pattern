@@ -17,19 +17,24 @@ class LoginScreen extends StatelessWidget {
         children: [
           emailField(bloc),
           passwordField(bloc),
-          submitButton(),
+          submitButton(bloc),
         ],
       ),
     );
   }
 
-  Widget submitButton() {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('Submit'),
-      style: ElevatedButton.styleFrom(
-        onPrimary: Colors.black,
-      ),
+  Widget submitButton(Bloc bloc) {
+    return StreamBuilder(
+      stream: bloc.submitValid,
+      builder: (context, snapsjot) {
+        return ElevatedButton(
+          onPressed: () {},
+          child: Text('Submit'),
+          style: ElevatedButton.styleFrom(
+            onPrimary: Colors.black,
+          ),
+        );
+      },
     );
   }
 
