@@ -4,10 +4,12 @@ import 'package:login_bloc/src/blocs/validation_mixin.dart';
 import 'package:rxdart/rxdart.dart';
 
 class Bloc with ValidationMixin {
-  final StreamController<String> _emailController =
-      StreamController<String>.broadcast();
-  final StreamController<String> _passwordController =
-      StreamController<String>.broadcast();
+  /// Change the StreamControllers into BehaviorSubjects in order to capture the latest email and password values that have been added to the controllers
+  final BehaviorSubject<String> _emailController = BehaviorSubject<String>();
+  final BehaviorSubject<String> _passwordController = BehaviorSubject<String>();
+
+  // final StreamController<String> _emailController = StreamController<String>.broadcast();
+  // final StreamController<String> _passwordController = StreamController<String>.broadcast();
 
   /// To abbreviate the access to the add function and the stream, can add getters to the class.
   /// When referencing changeEmail property, it returns the add function of the sink in the emailController
