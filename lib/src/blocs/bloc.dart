@@ -4,9 +4,10 @@ import 'package:login_bloc/src/blocs/validation_mixin.dart';
 import 'package:rxdart/rxdart.dart';
 
 class Bloc with ValidationMixin {
-  final StreamController<String> _emailController = StreamController<String>();
+  final StreamController<String> _emailController =
+      StreamController<String>.broadcast();
   final StreamController<String> _passwordController =
-      StreamController<String>();
+      StreamController<String>.broadcast();
 
   /// To abbreviate the access to the add function and the stream, can add getters to the class.
   /// When referencing changeEmail property, it returns the add function of the sink in the emailController
@@ -22,16 +23,17 @@ class Bloc with ValidationMixin {
   // Stream<String> get password =>
   //     _passwordController.stream.transform(passwordValidator);
 
-  /// Returns true when both email and password are valid.
-  Stream<bool> get submitValid =>
-      CombineLatestStream.combine2(email, password, (e, p) => true);
-
   Stream<String> email;
   Stream<String> password;
+  Stream<bool> submitValid;
 
   Bloc() {
     this.email = _emailController.stream.transform(emailValidator);
     this.password = _passwordController.stream.transform(passwordValidator);
+
+    /// Returns true when both email and password are valid.
+    this.submitValid =
+        CombineLatestStream.combine2(email, password, (e, p) => true);
 
     /// Listen to submitValid
     // submitValid.listen((event) {

@@ -25,10 +25,12 @@ class LoginScreen extends StatelessWidget {
 
   Widget submitButton(Bloc bloc) {
     return StreamBuilder(
+      /// If something changes in the submitValid stream, builder re-runs
       stream: bloc.submitValid,
-      builder: (context, snapsjot) {
+      builder: (context, snapshot) {
         return ElevatedButton(
-          onPressed: () {},
+          /// Is there's no data, disable the button, otherwise call the callback function
+          onPressed: snapshot.hasData ? null : () {},
           child: Text('Submit'),
           style: ElevatedButton.styleFrom(
             onPrimary: Colors.black,
