@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
       builder: (context, snapshot) {
         return ElevatedButton(
           /// Is there's no data, disable the button, otherwise call the callback function
-          onPressed: snapshot.hasData ? null : bloc.submit,
+          onPressed: snapshot.hasData ? bloc.submit : null,
           child: Text('Submit'),
           style: ElevatedButton.styleFrom(
             onPrimary: Colors.black,
